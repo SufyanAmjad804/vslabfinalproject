@@ -1,4 +1,5 @@
-﻿:root{
+﻿
+:root{
     --bg:#f3f7ff;
     --surface:#ffffff;
     --surface - 2:#f8fbff;
@@ -221,4 +222,274 @@ width: 52px; height: 52px; border - radius:18px; background: linear - gradient(1
     .grid - 4,.grid - 3,.grid - 2,.form - grid{ grid - template - columns:1fr}
     .page - title{ display: block}
     .dashboard - hero h2{ font - size:1.65rem}
-                                                                                                                                                                                                                }
+  /* Clean role-based version adjustments */
+.simple - topbar{ min - height:auto}
+.simple - topbar h1{ font - size:1.55rem}
+.simple - user{ margin - top:.5rem; margin - bottom:.8rem}
+.simple - login - panel{ grid - template - columns:1fr; max - width:520px}
+.simple - login - panel.login - card{ padding: 2rem}
+.sidebar.nav - list{ margin - top:.75rem}
+.page - container{ padding - top:1.1rem}
+/* Student-only project refinements */
+.demo - role{
+                                                                                                                                                                                                                    border: 0;
+                                                                                                                                                                                                                    cursor: pointer;
+                                                                                                                                                                                                                    background:#eef2ff;
+    color:#4338ca;
+    padding: .45rem .75rem;
+                                                                                                                                                                                                                        border - radius:999px;
+                                                                                                                                                                                                                        font - weight:700;
+                                                                                                                                                                                                                        font - size:.82rem;
+                                                                                                                                                                                                                    }
+.demo - role:hover{
+                                                                                                                                                                                                                    background:#dbeafe;color:#1d4ed8}
+.simple - topbar h1{ font - size:1.65rem}
+.simple - topbar p{ max - width:760px}
+
+
+
+
+/* Refined colorful student dashboard theme */
+:root{
+                                                                                                                                                                                                                            --student - pink:#ec4899;
+    --student - purple:#8b5cf6;
+    --student - blue:#3b82f6;
+    --student - cyan:#06b6d4;
+    --student - indigo:#4f46e5;
+    --student - orange:#f97316;
+    --student - surface:#ffffff;
+}
+
+                                                                                                                                                                                                                        html,body{
+                                                                                                                                                                                                                        background:
+                                                                                                                                                                                                                            radial - gradient(circle at 12 % 10 %, rgba(236, 72, 153, .12), transparent 24 %),
+        radial - gradient(circle at 88 % 14 %, rgba(59, 130, 246, .14), transparent 28 %),
+        radial - gradient(circle at 72 % 82 %, rgba(6, 182, 212, .10), transparent 25 %),
+        linear - gradient(135deg,#fdf4ff 0%,#f8fbff 28%,#f0f9ff 65%,#fff7ed 100%);
+}
+
+.sidebar{
+                                                                                                                                                                                                                        background:
+                                                                                                                                                                                                                            radial - gradient(circle at top left, rgba(255, 255, 255, .18), transparent 22 %),
+        linear - gradient(180deg,#581c87 0%,#3730a3 46%,#0f766e 100%);
+    border - right:1px solid rgba(255, 255, 255, .16);
+                                                                                                                                                                                                                        }
+
+.brand - icon{
+                                                                                                                                                                                                                        background: linear - gradient(135deg,#fde68a,#fb7185,#38bdf8);
+    color:#111827;
+    font - size:1.35rem;
+                                                                                                                                                                                                                        }
+
+.nav - list a{
+                                                                                                                                                                                                                        background: rgba(255, 255, 255, .09);
+                                                                                                                                                                                                                        border: 1px solid rgba(255, 255, 255, .08);
+                                                                                                                                                                                                                        }
+
+.nav - list a: hover,.nav - list a.active{
+                                                                                                                                                                                                                        background: linear - gradient(135deg,#f472b6,#8b5cf6,#3b82f6);
+    box - shadow:0 14px 28px rgba(79, 70, 229, .28);
+                                                                                                                                                                                                                        }
+
+.sidebar - user.simple - user{
+                                                                                                                                                                                                                        background: linear - gradient(135deg, rgba(255, 255, 255, .20), rgba(255, 255, 255, .08));
+                                                                                                                                                                                                                        border: 1px solid rgba(255, 255, 255, .20);
+                                                                                                                                                                                                                        }
+
+.avatar - badge{
+                                                                                                                                                                                                                        background: linear - gradient(135deg,#fb7185,#8b5cf6,#06b6d4);
+}
+
+.colorful - topbar{
+                                                                                                                                                                                                                        background:
+                                                                                                                                                                                                                            linear - gradient(135deg, rgba(255, 255, 255, .96), rgba(255, 255, 255, .82)),
+        linear - gradient(135deg,#f472b6,#8b5cf6,#38bdf8);
+    border: 1px solid rgba(255, 255, 255, .95);
+                                                                                                                                                                                                                        position: relative;
+                                                                                                                                                                                                                        overflow: hidden;
+                                                                                                                                                                                                                            box - shadow:0 20px 50px rgba(79,70,229,.10);
+                                                                                                                                                                                                                        }
+
+.colorful - topbar::before{
+                                                                                                                                                                                                                        content: "";
+                                                                                                                                                                                                                        position: absolute;
+                                                                                                                                                                                                                        inset: 0;
+                                                                                                                                                                                                                        background: linear - gradient(90deg, rgba(236, 72, 153, .08), rgba(139, 92, 246, .05), rgba(56, 189, 248, .05));
+                                                                                                                                                                                                                            pointer - events:none;
+                                                                                                                                                                                                                        }
+
+.colorful - topbar::after{
+                                                                                                                                                                                                                        content: "";
+                                                                                                                                                                                                                        position: absolute;
+                                                                                                                                                                                                                        right: -45px;
+                                                                                                                                                                                                                        top: -55px;
+                                                                                                                                                                                                                        width: 200px;
+                                                                                                                                                                                                                        height: 200px;
+                                                                                                                                                                                                                            border - radius:50 %;
+                                                                                                                                                                                                                        background: linear - gradient(135deg, rgba(236, 72, 153, .16), rgba(59, 130, 246, .14));
+                                                                                                                                                                                                                        }
+
+.dashboard - hero,.login - showcase{
+                                                                                                                                                                                                                        background:
+                                                                                                                                                                                                                            radial - gradient(circle at 14 % 22 %, rgba(255, 255, 255, .18), transparent 24 %),
+        radial - gradient(circle at 86 % 82 %, rgba(255, 255, 255, .10), transparent 18 %),
+        linear - gradient(135deg,#fb7185 0%,#8b5cf6 40%,#4f46e5 72%,#06b6d4 100%);
+    box - shadow:0 24px 60px rgba(79, 70, 229, .20);
+                                                                                                                                                                                                                        }
+
+.metric - chip{
+                                                                                                                                                                                                                        background: rgba(255, 255, 255, .14);
+                                                                                                                                                                                                                        border: 1px solid rgba(255, 255, 255, .18);
+                                                                                                                                                                                                                            backdrop - filter:blur(6px);
+                                                                                                                                                                                                                        }
+
+.stat - card{
+                                                                                                                                                                                                                        background: linear - gradient(180deg,#ffffff 0%,#fbfdff 100%);
+    box - shadow:0 18px 44px rgba(79, 70, 229, .08);
+                                                                                                                                                                                                                        }
+.stat - card::after{ background: rgba(139, 92, 246, .05)}
+.stat - card.primary{
+                                                                                                                                                                                                                            border - top:4px solid #8b5cf6}
+.stat - card.success{
+                                                                                                                                                                                                                                border - top:4px solid #10b981}
+.stat - card.warning{
+                                                                                                                                                                                                                                    border - top:4px solid #f59e0b}
+.stat - card.info{
+                                                                                                                                                                                                                                        border - top:4px solid #06b6d4}
+.stat - card.primary.stat - icon{
+                                                                                                                                                                                                                                        background:#f3e8ff;color:#7e22ce}
+.stat - card.success.stat - icon{
+                                                                                                                                                                                                                                            background:#dcfce7;color:#15803d}
+.stat - card.warning.stat - icon{
+                                                                                                                                                                                                                                                background:#fff7ed;color:#c2410c}
+.stat - card.info.stat - icon{
+                                                                                                                                                                                                                                                    background:#ecfeff;color:#0f766e}
+
+.data - card,.quick - link,.login - card{
+                                                                                                                                                                                                                                                        background: linear - gradient(180deg, rgba(255, 255, 255, .97), rgba(255, 255, 255, .92));
+                                                                                                                                                                                                                                                        border: 1px solid rgba(226, 232, 240, .9);
+                                                                                                                                                                                                                                                            box - shadow:0 18px 42px rgba(15,23,42,.07);
+                                                                                                                                                                                                                                                        }
+
+.card - heading h3,.page - title h2,.topbar h1,.dashboard - hero h2{
+                                                                                                                                                                                                                                                        color:#172554;
+}
+.dashboard - hero h2,.dashboard - hero p,.dashboard - hero.badge - soft,.metric - chip span,.metric - chip strong{
+                                                                                                                                                                                                                                                        color:#fff;
+}
+.dashboard - hero.badge - soft{
+                                                                                                                                                                                                                                                        background: rgba(255, 255, 255, .18);
+                                                                                                                                                                                                                                                        border: 1px solid rgba(255, 255, 255, .14);
+                                                                                                                                                                                                                                                        color:#fff;
+}
+
+.btn - primary{
+                                                                                                                                                                                                                                                        background: linear - gradient(135deg,#ec4899,#8b5cf6,#3b82f6);
+    box - shadow:0 14px 26px rgba(79, 70, 229, .24);
+                                                                                                                                                                                                                                                        }
+
+.badge - soft,.demo - role{
+                                                                                                                                                                                                                                                        background: linear - gradient(135deg,#fdf2f8,#eef2ff,#ecfeff);
+    color:#6d28d9;
+    border:1px solid rgba(124, 58, 237, .12);
+                                                                                                                                                                                                                                                        }
+
+.progress - modern{
+                                                                                                                                                                                                                                                        background:#e9eefb;
+}
+.progress - modern > span{
+                                                                                                                                                                                                                                                        background: linear - gradient(90deg,#fb7185,#8b5cf6,#06b6d4);
+}
+
+.table thead th{
+                                                                                                                                                                                                                                                        background: linear - gradient(135deg,#fdf2f8,#eef2ff,#ecfeff);
+    color:#4338ca;
+}
+
+.status - pill{
+                                                                                                                                                                                                                                                        background:#eef2ff;
+    color:#4338ca;
+    border - color:#c7d2fe;
+}
+
+.item - title{
+                                                                                                                                                                                                                                                        color:#172554}
+.item - text,.item - meta,.topbar p{
+                                                                                                                                                                                                                                                            color:#64748b}
+
+@media(max - width:900px){
+    .colorful - topbar::after{ display: none}
+                                                                                                                                                                                                                                                                }
+
+
+/* Final home page layout */
+.student - home - panel{
+                                                                                                                                                                                                                                                                display: grid;
+                                                                                                                                                                                                                                                                    grid - template - columns:1.08fr .92fr;
+                                                                                                                                                                                                                                                                    border - radius:2rem;
+                                                                                                                                                                                                                                                                overflow: hidden;
+                                                                                                                                                                                                                                                                background: rgba(255, 255, 255, .92);
+                                                                                                                                                                                                                                                                border: 1px solid rgba(255, 255, 255, .9);
+                                                                                                                                                                                                                                                                    box - shadow:0 28px 70px rgba(79,70,229,.14);
+                                                                                                                                                                                                                                                                }
+
+.student - home - showcase{
+                                                                                                                                                                                                                                                                padding: 2rem;
+                                                                                                                                                                                                                                                                color:#fff;
+    position: relative;
+                                                                                                                                                                                                                                                                overflow: hidden;
+                                                                                                                                                                                                                                                                background:
+                                                                                                                                                                                                                                                                    radial - gradient(circle at 18 % 20 %, rgba(255, 255, 255, .20), transparent 26 %),
+        radial - gradient(circle at 88 % 78 %, rgba(255, 255, 255, .12), transparent 20 %),
+        linear - gradient(135deg,#fb7185 0%,#8b5cf6 42%,#4f46e5 72%,#06b6d4 100%);
+}
+
+.student - home - showcase::before{
+                                                                                                                                                                                                                                                                content: "";
+                                                                                                                                                                                                                                                                position: absolute;
+                                                                                                                                                                                                                                                                right: -70px;
+                                                                                                                                                                                                                                                                top: -70px;
+                                                                                                                                                                                                                                                                width: 240px;
+                                                                                                                                                                                                                                                                height: 240px;
+                                                                                                                                                                                                                                                                    border - radius:50 %;
+                                                                                                                                                                                                                                                                background: rgba(255, 255, 255, .12);
+                                                                                                                                                                                                                                                                }
+
+.student - home - showcase::after{
+                                                                                                                                                                                                                                                                content: "";
+                                                                                                                                                                                                                                                                position: absolute;
+                                                                                                                                                                                                                                                                left: -50px;
+                                                                                                                                                                                                                                                                bottom: -80px;
+                                                                                                                                                                                                                                                                width: 210px;
+                                                                                                                                                                                                                                                                height: 210px;
+                                                                                                                                                                                                                                                                    border - radius:50 %;
+                                                                                                                                                                                                                                                                background: rgba(255, 255, 255, .09);
+                                                                                                                                                                                                                                                                }
+
+.student - home - showcase > *{ position: relative; z - index:1}
+.student - home - showcase h2{
+                                                                                                                                                                                                                                                                    font - size:2.15rem; font - weight:850; margin: .7rem 0 .45rem; color:#fff}
+.student - home - showcase p{ font - size:1rem; color: rgba(255, 255, 255, .92); margin - bottom:1.25rem}
+.student - home - showcase.badge - soft{
+                                                                                                                                                                                                                                                                    background: rgba(255, 255, 255, .18); color:#fff;border-color:rgba(255,255,255,.20)}
+.compact - showcase - points{ gap: .75rem; margin - top:1.2rem}
+.compact - showcase - points.showcase - point{ background: rgba(255, 255, 255, .13); border: 1px solid rgba(255, 255, 255, .13); backdrop - filter:blur(8px)}
+.student - home - card{ padding: 2rem; background: linear - gradient(180deg, rgba(255, 255, 255, .98), rgba(255, 255, 255, .94))}
+.student - home - card h3{
+                                                                                                                                                                                                                                                                            font - weight:850; color:#172554;margin-bottom:.25rem}
+.summary - mini - grid{ display: grid; grid - template - columns:repeat(3, minmax(0, 1fr)); gap: .75rem; margin - top:1.1rem}
+.summary - mini - card{
+                                                                                                                                                                                                                                                                            background: linear - gradient(135deg,#fdf2f8,#eef2ff,#ecfeff);border:1px solid rgba(124,58,237,.10);border-radius:1rem;padding:.9rem}
+.summary - mini - card span{
+                                                                                                                                                                                                                                                                                display: block; font - size:.78rem; color:#64748b;font-weight:700}
+.summary - mini - card strong{
+                                                                                                                                                                                                                                                                                    display: block; color:#172554;margin-top:.22rem;font-size:1rem}
+
+.login - showcase p{ font - size:1rem; line - height:1.55}
+.topbar.simple - topbar p{ display: none}
+
+                                                                                                                                                                                                                                                                                        @media(max - width:1100px){
+    .student - home - panel{ grid - template - columns:1fr}
+    .summary - mini - grid{ grid - template - columns:1fr}
+                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                    }
