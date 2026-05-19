@@ -9,3 +9,42 @@
         <p class="text-muted">Courses currently assigned to your student account.</p>
     </div>
 </div>
+<div class="data-card">
+    <div class="toolbar mb-3">
+        <InputText class="form-control" placeholder="Search my courses" @bind-Value="searchTerm" />
+        <button class="btn btn-primary" @onclick="LoadCoursesAsync">Search</button>
+    </div>
+
+    @if (enrollments.Count == 0)
+    {
+        <div class="empty-state">No enrolled courses found.</div>
+    }
+    else
+    {
+        <div class="table-wrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Course Code</th>
+                        <th>Course Title</th>
+                        <th>Instructor</th>
+                        <th>Credits</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var enrollment in enrollments)
+                    {
+                        <tr>
+                            <td>@enrollment.Course?.Code</td>
+                            <td>@enrollment.Course?.Title</td>
+                            <td>@enrollment.Course?.InstructorName</td>
+                            <td>@enrollment.Course?.CreditHours</td>
+                            <td><span class="status-pill success">@enrollment.Status</span></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
