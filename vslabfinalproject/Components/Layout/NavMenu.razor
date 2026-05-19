@@ -1,2 +1,17 @@
 ﻿@inject DashboardAuthStateProvider AuthProvider   // Commit 1: Added authentication provider
 @inject NavigationManager Navigation              // Commit 1: Added navigation manager
+<aside class="sidebar">   <!-- Commit 2: Created sidebar layout -->
+
+    <!-- Commit 2: Added brand/logo section -->
+    <div class="brand">
+        <div class="brand-icon">🎓</div>
+        <div>
+            <strong>Student Dashboard</strong>
+            <small>Student account</small>
+        </div>
+    </div>
+    <!-- Commit 3: Added authorization handling -->
+    <AuthorizeView Context="authState">
+
+        <!-- Commit 3: Authorized user section -->
+        <Authorized>
