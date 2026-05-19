@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.EntityFrameworkCore;
-using StudentDashboard.Web.Data;
-using StudentDashboard.Web.Repositories;
-using StudentDashboard.Web.Services;
+using vslabfinalproject.Services;
+using vslabfinalproject.Data;
+using vslabfinalproject.Repositories;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,8 +29,6 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/error");
 }
 
-// HTTPS is intentionally disabled for this assignment package so it runs
-// without requiring a local developer certificate in Visual Studio.
 app.UseStaticFiles();
 app.UseRouting();
 

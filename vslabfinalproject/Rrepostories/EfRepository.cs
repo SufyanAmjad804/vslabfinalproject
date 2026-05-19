@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StudentDashboard.Web.Data;
-using StudentDashboard.Web.Models;
+using vslabfinalproject.Data;
+using vslabfinalproject.Repositories;
+using vslabfinalproject.Models;
 
-namespace StudentDashboard.Web.Repositories;
+namespace vslabfinalproject.Repositories;
 
 public class EfRepository<T> : IRepository<T> where T : BaseEntity
 {

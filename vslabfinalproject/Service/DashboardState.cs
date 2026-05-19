@@ -1,4 +1,4 @@
-﻿namespace StudentDashboard.Web.Services;
+﻿namespace vslabfinalproject.Services;
 
 public class DashboardState
 {

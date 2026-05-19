@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace StudentDashboard.Web.Models;
+namespace vslabfinalproject.Models;
 
 public abstract class Person : BaseEntity
 {
@@ -20,4 +20,3 @@ public abstract class Person : BaseEntity
 
     public override string EntityLabel => GetFullName();
 }
-s

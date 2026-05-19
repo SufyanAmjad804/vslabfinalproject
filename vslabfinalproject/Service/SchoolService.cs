@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StudentDashboard.Web.Data;
-using StudentDashboard.Web.Models;
+using vslabfinalproject.Data;
+using vslabfinalproject.Models;
 
-namespace StudentDashboard.Web.Services;
+namespace vslabfinalproject.Services;
 
 public class SchoolService : ISchoolService
 {
@@ -127,6 +127,7 @@ public class SchoolService : ISchoolService
         db.Courses.Remove(course);
         await db.SaveChangesAsync();
     }
+
     public async Task<List<Enrollment>> GetEnrollmentsAsync()
     {
         await using var db = await dbFactory.CreateDbContextAsync();
@@ -296,6 +297,7 @@ public class SchoolService : ISchoolService
         db.CalendarEvents.Add(calendarEvent);
         await db.SaveChangesAsync();
     }
+
     public async Task<List<StudyTask>> GetStudyTasksAsync(int? studentId = null, string? search = null, string? status = null)
     {
         await using var db = await dbFactory.CreateDbContextAsync();
@@ -384,5 +386,4 @@ public class SchoolService : ISchoolService
         db.StudyTasks.Remove(task);
         await db.SaveChangesAsync();
     }
-
 }

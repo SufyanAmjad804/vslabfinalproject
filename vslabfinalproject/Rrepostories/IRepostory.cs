@@ -1,6 +1,6 @@
-﻿using StudentDashboard.Web.Models;
+﻿using vslabfinalproject.Models;
 
-namespace StudentDashboard.Web.Repositories;
+namespace vslabfinalproject.Repositories;
 
 public interface IRepository<T> where T : BaseEntity
 {

@@ -1,7 +1,6 @@
-﻿using StudentDashboard.Web.Models;
-using vslabfinalproject.Components.Pages;
+﻿using vslabfinalproject.Models;
 
-namespace StudentDashboard.Web.Data;
+namespace vslabfinalproject.Data;
 
 public static class SeedData
 {

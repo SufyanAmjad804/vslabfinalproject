@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StudentDashboard.Web.Models;
+using vslabfinalproject.Models;
 
-namespace StudentDashboard.Web.Data;
+namespace vslabfinalproject.Data;
 
 public class AppDbContext : DbContext
 {

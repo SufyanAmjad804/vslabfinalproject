@@ -1,6 +1,6 @@
 {
     "profiles": {
-        "StudentDashboard.Web": {
+        "vslabfinalproject": {
             "commandName": "Project",
             "dotnetRunMessages": true,
             "launchBrowser": true,

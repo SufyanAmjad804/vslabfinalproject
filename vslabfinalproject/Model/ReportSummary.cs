@@ -1,4 +1,4 @@
-﻿namespace StudentDashboard.Web.Models;
+﻿namespace vslabfinalproject.Models;
 
 public class ReportSummary
 {

@@ -1,6 +1,6 @@
-﻿using StudentDashboard.Web.Models;
+﻿using vslabfinalproject.Models;
 
-namespace StudentDashboard.Web.Services;
+namespace vslabfinalproject.Services;
 
 public interface ISchoolService
 {

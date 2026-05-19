@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using vslabfinalproject.Components.Pages;
 
-namespace StudentDashboard.Web.Models;
+namespace vslabfinalproject.Models;
 
 public class AttendanceRecord : BaseEntity
 {

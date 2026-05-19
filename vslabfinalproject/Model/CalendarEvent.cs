@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace StudentDashboard.Web.Models;
+namespace vslabfinalproject.Models;
 
 public class CalendarEvent : BaseEntity
 {
