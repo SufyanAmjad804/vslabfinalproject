@@ -127,3 +127,172 @@ public class SchoolService : ISchoolService
         db.Courses.Remove(course);
         await db.SaveChangesAsync();
     }
+    public async Task<List<Enrollment>> GetEnrollmentsAsync()
+    {
+        await using var db = await dbFactory.CreateDbContextAsync();
+        return await db.Enrollments.AsNoTracking()
+            .Include(item => item.Student)
+            .Include(item => item.Course)
+            .OrderByDescending(item => item.EnrolledOn)
+            .ToListAsync();
+    }
+
+    public async Task AddEnrollmentAsync(int studentId, int courseId)
+    {
+        await using var db = await dbFactory.CreateDbContextAsync();
+        var exists = await db.Enrollments.AnyAsync(item => item.StudentId == studentId && item.CourseId == courseId);
+        if (exists)
+        {
+            return;
+        }
+
+        db.Enrollments.Add(new Enrollment { StudentId = studentId, CourseId = courseId });
+        await db.SaveChangesAsync();
+    }
+
+    public async Task<List<AttendanceRecord>> GetAttendanceAsync()
+    {
+        await using var db = await dbFactory.CreateDbContextAsync();
+        return await db.AttendanceRecords.AsNoTracking()
+            .Include(item => item.Student)
+            .Include(item => item.Course)
+            .OrderByDescending(item => item.AttendanceDate)
+            .ToListAsync();
+    }
+
+    public async Task AddAttendanceAsync(AttendanceRecord attendance)
+    {
+        await using var db = await dbFactory.CreateDbContextAsync();
+        db.AttendanceRecords.Add(attendance);
+        await db.SaveChangesAsync();
+    }
+
+    public async Task<List<GradeRecord>> GetGradesAsync()
+    {
+        await using var db = await dbFactory.CreateDbContextAsync();
+        return await db.GradeRecords.AsNoTracking()
+            .Include(item => item.Student)
+            .Include(item => item.Course)
+            .OrderByDescending(item => item.Id)
+            .ToListAsync();
+    }
+
+    public async Task AddGradeAsync(GradeRecord grade)
+    {
+        await using var db = await dbFactory.CreateDbContextAsync();
+        db.GradeRecords.Add(grade);
+        await db.SaveChangesAsync();
+    }
+
+    public async Task<List<AssignmentItem>> GetAssignmentsAsync()
+    {
+        await using var db = await dbFactory.CreateDbContextAsync();
+        return await db.Assignments.AsNoTracking()
+            .Include(item => item.Course)
+            .OrderBy(item => item.DueDate)
+            .ToListAsync();
+    }
+
+    public async Task AddAssignmentAsync(AssignmentItem assignment)
+    {
+        await using var db = await dbFactory.CreateDbContextAsync();
+        db.Assignments.Add(assignment);
+        await db.SaveChangesAsync();
+    }
+
+    public async Task<List<FeeInvoice>> GetFeesAsync()
+    {
+        await using var db = await dbFactory.CreateDbContextAsync();
+        return await db.FeeInvoices.AsNoTracking()
+            .Include(item => item.Student)
+            .OrderBy(item => item.DueDate)
+            .ToListAsync();
+    }
+
+    public async Task AddFeeAsync(FeeInvoice invoice)
+    {
+        await using var db = await dbFactory.CreateDbContextAsync();
+        db.FeeInvoices.Add(invoice);
+        await db.SaveChangesAsync();
+    }
+
+    public async Task MarkFeePaidAsync(int id)
+    {
+        await using var db = await dbFactory.CreateDbContextAsync();
+        var invoice = await db.FeeInvoices.FindAsync(id);
+        if (invoice is null)
+        {
+            return;
+        }
+
+        invoice.IsPaid = true;
+        await db.SaveChangesAsync();
+    }
+
+    public async Task<List<NotificationItem>> GetNotificationsAsync()
+    {
+        await using var db = await dbFactory.CreateDbContextAsync();
+        return await db.Notifications.AsNoTracking().OrderByDescending(item => item.Id).ToListAsync();
+    }
+
+    public async Task AddNotificationAsync(NotificationItem notification)
+    {
+        await using var db = await dbFactory.CreateDbContextAsync();
+        db.Notifications.Add(notification);
+        await db.SaveChangesAsync();
+    }
+
+    public async Task MarkNotificationReadAsync(int id)
+    {
+        await using var db = await dbFactory.CreateDbContextAsync();
+        var notification = await db.Notifications.FindAsync(id);
+        if (notification is null)
+        {
+            return;
+        }
+
+        notification.IsRead = true;
+        await db.SaveChangesAsync();
+    }
+
+    public async Task<List<SupportTicket>> GetSupportTicketsAsync()
+    {
+        await using var db = await dbFactory.CreateDbContextAsync();
+        return await db.SupportTickets.AsNoTracking()
+            .Include(item => item.Student)
+            .OrderByDescending(item => item.Id)
+            .ToListAsync();
+    }
+
+    public async Task AddSupportTicketAsync(SupportTicket ticket)
+    {
+        await using var db = await dbFactory.CreateDbContextAsync();
+        db.SupportTickets.Add(ticket);
+        await db.SaveChangesAsync();
+    }
+
+    public async Task CloseSupportTicketAsync(int id)
+    {
+        await using var db = await dbFactory.CreateDbContextAsync();
+        var ticket = await db.SupportTickets.FindAsync(id);
+        if (ticket is null)
+        {
+            return;
+        }
+
+        ticket.Status = "Closed";
+        await db.SaveChangesAsync();
+    }
+
+    public async Task<List<CalendarEvent>> GetEventsAsync()
+    {
+        await using var db = await dbFactory.CreateDbContextAsync();
+        return await db.CalendarEvents.AsNoTracking().OrderBy(item => item.EventDate).ToListAsync();
+    }
+
+    public async Task AddEventAsync(CalendarEvent calendarEvent)
+    {
+        await using var db = await dbFactory.CreateDbContextAsync();
+        db.CalendarEvents.Add(calendarEvent);
+        await db.SaveChangesAsync();
+    }
