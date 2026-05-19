@@ -1,0 +1,11 @@
+﻿@page "/courses"
+@attribute [Authorize]
+@inject ISchoolService SchoolService
+@inject AuthenticationStateProvider AuthStateProvider
+
+<div class="page-title">
+    <div>
+        <h2>My Courses</h2>
+        <p class="text-muted">Courses currently assigned to your student account.</p>
+    </div>
+</div>
