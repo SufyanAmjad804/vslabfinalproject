@@ -296,3 +296,93 @@ public class SchoolService : ISchoolService
         db.CalendarEvents.Add(calendarEvent);
         await db.SaveChangesAsync();
     }
+    public async Task<List<StudyTask>> GetStudyTasksAsync(int? studentId = null, string? search = null, string? status = null)
+    {
+        await using var db = await dbFactory.CreateDbContextAsync();
+        var query = db.StudyTasks.AsNoTracking()
+            .Include(item => item.Student)
+            .AsQueryable();
+
+        if (studentId.HasValue)
+        {
+            query = query.Where(item => item.StudentId == studentId.Value);
+        }
+
+        if (!string.IsNullOrWhiteSpace(search))
+        {
+            var term = search.Trim().ToLower();
+            query = query.Where(item =>
+                item.Title.ToLower().Contains(term) ||
+                item.Description.ToLower().Contains(term) ||
+                item.Priority.ToLower().Contains(term) ||
+                item.Status.ToLower().Contains(term));
+        }
+
+        if (!string.IsNullOrWhiteSpace(status) && status != "All")
+        {
+            query = query.Where(item => item.Status == status);
+        }
+
+        return await query
+            .OrderBy(item => item.IsCompleted)
+            .ThenBy(item => item.DueDate)
+            .ThenBy(item => item.Priority)
+            .ToListAsync();
+    }
+
+    public async Task<StudyTask> SaveStudyTaskAsync(StudyTask task)
+    {
+        await using var db = await dbFactory.CreateDbContextAsync();
+        task.Touch();
+
+        if (task.IsCompleted)
+        {
+            task.Status = "Completed";
+        }
+        else if (task.Status == "Completed")
+        {
+            task.IsCompleted = true;
+        }
+
+        if (task.Id == 0)
+        {
+            db.StudyTasks.Add(task);
+        }
+        else
+        {
+            db.StudyTasks.Update(task);
+        }
+
+        await db.SaveChangesAsync();
+        return task;
+    }
+
+    public async Task ToggleStudyTaskCompletionAsync(int id)
+    {
+        await using var db = await dbFactory.CreateDbContextAsync();
+        var task = await db.StudyTasks.FindAsync(id);
+        if (task is null)
+        {
+            return;
+        }
+
+        task.IsCompleted = !task.IsCompleted;
+        task.Status = task.IsCompleted ? "Completed" : "Pending";
+        task.Touch();
+        await db.SaveChangesAsync();
+    }
+
+    public async Task DeleteStudyTaskAsync(int id)
+    {
+        await using var db = await dbFactory.CreateDbContextAsync();
+        var task = await db.StudyTasks.FindAsync(id);
+        if (task is null)
+        {
+            return;
+        }
+
+        db.StudyTasks.Remove(task);
+        await db.SaveChangesAsync();
+    }
+
+}
