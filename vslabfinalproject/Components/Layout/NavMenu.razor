@@ -100,4 +100,40 @@
     </AuthorizeView>
 
 </aside>
+@code {
+
+    // Commit 6: Logout functionality
+    private async Task LogoutAsync()
+    {
+        await AuthProvider.LogoutAsync();
+        Navigation.NavigateTo("/login");
+    }
+
+    // Commit 7: Added helper method for student names
+    private static string GetStudentName(string? email)
+    {
+        return email?.ToLowerInvariant() switch
+        {
+            "irtaza@studentdash.local" => "Irtaza Shahid",
+            "sufyan@studentdash.local" => "Sufyan Amjad",
+            "hashir@studentdash.local" => "Hashir Hassan",
+            _ => "Student"
+        };
+    }
+
+    // Commit 7: Added helper method for initials
+    private static string GetInitials(string? text)
+    {
+        if (string.IsNullOrWhiteSpace(text))
+        {
+            return "SD";
+        }
+
+        var token = text.Split('@', StringSplitOptions.RemoveEmptyEntries)[0];
+
+        return token.Length == 0
+            ? "SD"
+            : token[0].ToString().ToUpperInvariant();
+    }
+}
 
