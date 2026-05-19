@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <Folder Include="Service\" />
-    <Folder Include="Rrepostories\" />
   </ItemGroup>
 
 </Project>
