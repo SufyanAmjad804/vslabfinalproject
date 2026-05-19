@@ -1,5 +1,6 @@
 ﻿@inject DashboardAuthStateProvider AuthProvider   // Commit 1: Added authentication provider
 @inject NavigationManager Navigation              // Commit 1: Added navigation manager
+
 <aside class="sidebar">   <!-- Commit 2: Created sidebar layout -->
 
     <!-- Commit 2: Added brand/logo section -->
@@ -10,6 +11,7 @@
             <small>Student account</small>
         </div>
     </div>
+
     <!-- Commit 3: Added authorization handling -->
     <AuthorizeView Context="authState">
 
@@ -29,7 +31,8 @@
                     <small>Student account</small>
                 </div>
             </div>
- <!-- Commit 5: Added navigation menu -->
+
+            <!-- Commit 5: Added navigation menu -->
             <nav class="nav-list mt-3">
 
                 <NavLink href="/" Match="NavLinkMatch.All">
@@ -100,6 +103,7 @@
     </AuthorizeView>
 
 </aside>
+
 @code {
 
     // Commit 6: Logout functionality
@@ -136,4 +140,3 @@
             : token[0].ToString().ToUpperInvariant();
     }
 }
-
