@@ -232,3 +232,83 @@ else
     </div>
 }
 
+@code {
+    private Student? student;
+    private ReportSummary? summary;
+    private List<Enrollment> enrollments = new();
+    private List<AttendanceRecord> attendance = new();
+    private List<GradeRecord> grades = new();
+    private List<AssignmentItem> assignments = new();
+    private List<FeeInvoice> invoices = new();
+    private List<NotificationItem> notifications = new();
+    private List<StudyTask> studyTasks = new();
+    private decimal attendancePercentage;
+    private decimal averageGrade;
+    private decimal pendingFees;
+    private int openTickets;
+    private int pendingStudyTasks;
+
+    protected override async Task OnInitializedAsync()
+    {
+        student = await GetCurrentStudentAsync();
+        summary = await SchoolService.GetSummaryAsync();
+
+        if (student is null)
+        {
+            return;
+        }
+
+        enrollments = (await SchoolService.GetEnrollmentsAsync())
+            .Where(item => item.StudentId == student.Id)
+            .ToList();
+
+        var courseIds = enrollments.Select(item => item.CourseId).ToHashSet();
+
+        attendance = (await SchoolService.GetAttendanceAsync())
+            .Where(item => item.StudentId == student.Id)
+            .ToList();
+
+        grades = (await SchoolService.GetGradesAsync())
+            .Where(item => item.StudentId == student.Id)
+            .ToList();
+
+        assignments = (await SchoolService.GetAssignmentsAsync())
+            .Where(item => courseIds.Contains(item.CourseId))
+            .OrderBy(item => item.DueDate)
+            .Take(5)
+            .ToList();
+
+        invoices = (await SchoolService.GetFeesAsync())
+            .Where(item => item.StudentId == student.Id)
+            .ToList();
+
+        notifications = (await SchoolService.GetNotificationsAsync())
+            .Where(item => item.Audience == "All" || item.Audience == "Students")
+            .Take(4)
+            .ToList();
+
+        studyTasks = (await SchoolService.GetStudyTasksAsync(student.Id, status: "Pending"))
+            .Take(4)
+            .ToList();
+
+        pendingStudyTasks = (await SchoolService.GetStudyTasksAsync(student.Id))
+            .Count(item => item.Status != "Completed");
+
+        openTickets = (await SchoolService.GetSupportTicketsAsync())
+            .Count(item => item.StudentId == student.Id && item.Status != "Closed");
+
+        attendancePercentage = attendance.Count == 0 ? 0 : Math.Round((decimal)attendance.Count(item => item.Status == "Present") / attendance.Count * 100, 2);
+        averageGrade = grades.Count == 0 ? 0 : Math.Round(grades.Average(item => item.Percentage), 2);
+        pendingFees = invoices.Where(item => !item.IsPaid).Sum(item => item.Amount);
+    }
+
+    private async Task<Student?> GetCurrentStudentAsync()
+    {
+        var state = await AuthStateProvider.GetAuthenticationStateAsync();
+        var email = state.User.Identity?.Name ?? "irtaza@studentdash.local";
+        var students = await SchoolService.GetStudentsAsync(email);
+        return students.FirstOrDefault(item => item.Email.Equals(email, StringComparison.OrdinalIgnoreCase))
+            ?? students.FirstOrDefault()
+            ?? (await SchoolService.GetStudentsAsync()).FirstOrDefault();
+    }
+}
