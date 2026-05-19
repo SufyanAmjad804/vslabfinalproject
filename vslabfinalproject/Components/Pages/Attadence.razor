@@ -1,0 +1,17 @@
+﻿@page "/attendance"
+@attribute [Authorize]
+@inject ISchoolService SchoolService
+@inject AuthenticationStateProvider AuthStateProvider
+
+<div class="page-title">
+    <div>
+        <h2>My Attendance</h2>
+        <p class="text-muted">View your personal attendance records and percentage.</p>
+    </div>
+</div>
+
+<div class="grid grid-3 mb-3">
+    <StatCard Title="Total Classes" Value="@records.Count.ToString()" Description="Attendance records" Icon="📅" />
+    <StatCard Title="Present" Value="@presentCount.ToString()" Description="Classes attended" Icon="✅" AccentClass="success" />
+    <StatCard Title="Attendance %" Value="@($"{attendancePercentage}%")" Description="Your attendance ratio" Icon="📊" AccentClass="warning" />
+</div>
